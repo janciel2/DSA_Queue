@@ -180,7 +180,7 @@ int doubleTheValue(Queue *q, int value)
 			{
 				if(i % value == 0)
 					{
-						i = i * value;
+						i = i * 2;
 						dequeue(q);
 						enqueue(q, i);
 						i = front(*q);
