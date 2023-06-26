@@ -183,15 +183,14 @@ int doubleTheValue(Queue *q, int value)
 						i = i * 2;
 						dequeue(q);
 						enqueue(q, i);
-						i = front(*q);
 						retval++;	
 					}
 				else if(i % value != 0)
 					{
 						dequeue(q);
 						enqueue(q, i);
-						i = front(*q);	
 					}
+				i = front(*q);
 				mainCount++;
 			}
 	return retval;
