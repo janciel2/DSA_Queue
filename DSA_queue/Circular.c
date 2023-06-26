@@ -108,11 +108,13 @@ void display(Queue q)
 
 bool removeItem(Queue *q, int item)
 {
+	int count = 0, mainCount = 0, v;
 	bool deleted = false;
 	int i = front(*q);
 	if(!isEmpty(*q))
 		{
-			while(i != EMPTY)
+			for(v = q->front; q->elems[v] != EMPTY &&  v != (v + 2) % MAX; v = (v + 1) % MAX){count++;}
+			while(i != EMPTY && mainCount != count)
 				{
 							dequeue(q);
 							enqueue(q,i);
@@ -124,13 +126,11 @@ bool removeItem(Queue *q, int item)
 							display(*q);
 							return deleted;
 						}
-				 	if(i == q->elems[q->rear])
-					{
-						return deleted;
-					}					
-				}
-			
+
+					mainCount++;					
+				}	
 		}
+	return deleted;
 }
 
 /* Removes all even ad returns all delete item store in Q */
